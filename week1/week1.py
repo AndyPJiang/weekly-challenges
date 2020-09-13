@@ -116,26 +116,10 @@ class FlattenedBidirectionalIterator(AbstractFlattenedBidirectionalIterator,Gene
 
 
 
-a = BidirectionalIterator[int](['asdf'])
-b = BidirectionalIterator[int](['a','asdf','fsad','fwas','fwasd','fwaes','fwae7865s','fwaes3q2','fwaes2345rgtyrhtr'])
-c = BidirectionalIterator([])
-d = BidirectionalIterator(['aasdf','adfsdf','fsawed','awftrgsdf','6543wesfgdh'])
+iter1 = BidirectionalIterator([1,2,3])
+iter2 = BidirectionalIterator([4,5])
+iter3 = BidirectionalIterator([6,7,8])
 
 
+inst = FlattenedBidirectionalIterator([iter1,iter2,iter3])
 
-inst = FlattenedBidirectionalIterator([a,b,c,d])
-res = []
-res2 = []
-
-for i in range(14):
-    res.append(inst.__next__())
-for i in range(13):
-    res2.append(inst.__prev__())
-
-
-res.pop()
-print(res)
-res2 = res2[::-1]
-print(res2)
-
-print(res == res2)
