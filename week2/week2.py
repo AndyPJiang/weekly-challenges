@@ -1,10 +1,4 @@
 class MatchParentheses:
-    '''
-    Given a base string of parentheses and a target string of parentheses, 
-    find the minimum number of single character insertions such that the target 
-    string is a substring of the base string.
-
-    '''
 
     def __init__(self, base: str, target: str):
         self.base = base
@@ -30,8 +24,3 @@ class MatchParentheses:
             min_insertions = min(min_insertions, insertions)
         return min_insertions
 
-
-
-
-# f = MatchParentheses
-# print(f.match('((()())()()))','(((())))'))
