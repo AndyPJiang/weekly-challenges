@@ -1,10 +1,8 @@
 # week3
 class TreeNode:
-    def __init__(self, data: int, left=None, right=None):
-        self.right = left
-        self.left = right
+    def __init__(self, data: int, children=[]):
+        self.children = []
         self.data = data
-
 
 class Tree:
     def __init__(self, root: TreeNode):
@@ -15,21 +13,14 @@ class Tree:
             return 0
         return self.longest_path_recur(self.root, 1)
     
-    def longest_path_recur(self,root,longest) -> int:
-        longest_right = longest
-        longest_left = longest
+    def longest_path_recur(self,root,cur_longest) -> int:
+        longest = cur_longest
+        for child in root.children:
+            if child.data == root.data+1:
+                longest = max(longest, self.longest_path_recur(child, cur_longest+1))
+            longest = max(longest, self.longest_path_recur(child, 1))
 
-        if root.right:
-            if root.right.data == root.data+1:
-                longest_right = max(longest_right, self.longest_path_recur(root.right, longest+1))
-            longest_right = max(longest_right, self.longest_path_recur(root.right, 1))
-
-        if root.left:
-            if root.left.data == root.data+1:
-                longest_left = max(longest_left, self.longest_path_recur(root.left, longest+1))
-            longest_left = max(longest_left, self.longest_path_recur(root.left, 1))
-
-        return max(longest_right,longest_left)
+        return longest
 
 
 
