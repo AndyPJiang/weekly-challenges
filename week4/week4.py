@@ -7,7 +7,7 @@ class LargestSumRectangle:
         self.grid = grid
         self.rows = len(grid)
 
-    # pre-compute row sums starting at every index ( 0(n^2) size )
+    # pre-compute row sums starting at every index ( 0(n*m) size )
     def getRowSums(self) -> dict:
         grid = self.grid
         rows = self.rows
@@ -25,7 +25,7 @@ class LargestSumRectangle:
 
     # returns a tuple of pairs of indicies, the first pair representing the index of left top corner of the rectangle
     #  and the second pair representing the index of right bottom corner of the rectangle. 
-    # algorithm runs in 0(n^3). 
+    # algorithm runs in 0(n^2 * m). 
     def findLargestRectangle(self) -> tuple:
         grid = self.grid
         if len(grid) == 0:
